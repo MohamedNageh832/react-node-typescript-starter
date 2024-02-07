@@ -1,11 +1,17 @@
-import { VideoUpload } from "@/pages";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import { RenderRoutes } from "./routes";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(<Route path="*" element={<RenderRoutes />} />)
+);
 
 function App() {
-  return (
-    <div className="wrapper">
-      <VideoUpload />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

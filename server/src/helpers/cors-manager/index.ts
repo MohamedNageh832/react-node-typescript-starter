@@ -1,7 +1,6 @@
 import cors from "cors";
 import { CorsCallbackFn, ICorsManager, IOrigin, Method } from "./types";
-import { Request } from "express";
-import { IEServer } from "../server/types";
+import { IEServer, Request } from "../server/types";
 
 const ERR_MSG = "Not allowed by cors";
 
@@ -23,7 +22,9 @@ class CorsManager implements ICorsManager {
   #corsOptionsDelegate(req: Request, callback: CorsCallbackFn) {
     const requestOrigin = req.header("Origin");
 
-    const origin = CorsManager.origins.filter((o) => o.name === requestOrigin)[0];
+    const origin = CorsManager.origins.filter(
+      (o) => o.name === requestOrigin,
+    )[0];
 
     if (!origin) return callback(null, { origin: false });
 

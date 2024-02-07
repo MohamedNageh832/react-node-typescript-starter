@@ -1,7 +1,7 @@
-import { ExpressHandlers, IEServer } from "./types";
-import express, { Application, Express, RequestHandler } from "express";
+import { ExpressHandlers } from "./types";
+import express, { Express, RequestHandler } from "express";
 
-class EServer implements IEServer {
+class EServer {
   port: string | number;
   app: Express;
 
@@ -9,6 +9,10 @@ class EServer implements IEServer {
     this.port = port;
     this.app = express();
   }
+
+  static Router = express.Router;
+
+  static json = express.json;
 
   listen(cb: () => void) {
     this.app.listen(this.port, cb);
@@ -48,11 +52,6 @@ class EServer implements IEServer {
 
   patch(path: string, cb: RequestHandler) {
     this.app.patch(path, cb);
-  }
-
-  // Static methods
-  static router() {
-    return express.Router;
   }
 }
 

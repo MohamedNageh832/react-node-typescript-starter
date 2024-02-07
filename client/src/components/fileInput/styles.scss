@@ -1,0 +1,14 @@
+.file-input {
+  position: relative;
+}
+
+.file-input__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.file-input__input::-webkit-file-upload-button {
+  display: none;
+}
